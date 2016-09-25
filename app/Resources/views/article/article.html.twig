@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h2>{{ article.title }}</h2><span>par {{ article.created_by }}<br>le {{ article.created_at|date('d/m/Y') }}</span>
+    <p>{{ article.leading }}</p>
+    <p>{{ article.body }}</p>
+    <input type="button" onClick="window.location.href='{{ path('front_index') }}'" value="Retour à la liste">
+    <form  action="{{ path('front_delete_article', {'slug': article.slug}) }}" method="post">
+        <input type="hidden" name="_method" value="DELETE" />
+        <input type="submit" value="Supprimer">
+    </form>
+{% endblock body %}

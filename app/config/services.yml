@@ -1,0 +1,18 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/book/service_container.html
+parameters:
+#    parameter_name: value
+
+services:
+    front.article.manager:
+        class: AppBundle\Manager\ArticleManager
+        arguments: ["@guzzle.http_client"]
+    guzzle.http_client:
+        class: GuzzleHttp\Client
+        arguments:
+            -
+                base_uri: "%api.endpoint%"
+                
+    front.article.form_handler:
+        class: AppBundle\Form\Handler\ArticleHandler
+        arguments: ["@front.article.manager", "@router"]

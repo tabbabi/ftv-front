@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Liste des articles</h1>
+    <input type="button" onClick="window.location.href='{{ path('front_create_article') }}'" value="Ajouter un article">
+    {% for article in articles %}
+        <div>
+            <h3>{{ article.title }} [ par {{ article.created_by ~ '  le '~ article.created_at|date('d/m/Y') }}]</h3>
+            <p>{{ article.leading }}</p>
+            <a href="{{ path('front_get_article', {'slug': article.slug}) }}">Lire la suite</a>
+        </div>
+    {% endfor %}
+{% endblock %}

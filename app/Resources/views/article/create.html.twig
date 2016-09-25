@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ form_start(form, {'action': path('front_post_form_article')}) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="Créer">
+        <input type="button" onClick="window.location.href='{{ path('front_index') }}'" value="Retour à la liste">
+    {{ form_end(form) }}
+    
+{% endblock %}
